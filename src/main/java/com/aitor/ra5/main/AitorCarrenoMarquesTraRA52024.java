@@ -5,6 +5,7 @@
 package com.aitor.ra5.main;
 
 import com.aitor.ra5.tools.HashTool;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -24,5 +25,7 @@ public class AitorCarrenoMarquesTraRA52024 {
 //            System.out.println(a);
 //        }
         System.out.println(ht.getHash("SHA-256", "Este es un mensaje a encriptar"));
+        File f = new File("/home/aitor/Documents/UD5-Secure-Programing-Java-PRACTICE.pdf");
+        System.out.println(ht.getFileHash("SHA-256", f));
     }
 }

@@ -4,7 +4,11 @@
  */
 package com.aitor.ra5.tools;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Provider;
@@ -13,6 +17,13 @@ import java.security.Security;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+/**
+ * CURRENT TODO:
+ *      -Place error messages on GUI for the exceptions
+ *      -Javadoc of getFileHash
+ */
+
 
 /**
  *
@@ -98,12 +109,52 @@ public class HashTool {
             
         }catch(NoSuchAlgorithmException ex){
             System.err.println("Algorithm not found");
-            //TODO (THROWING A ERROR MESSAGE IN GUI)
+            //TODO (THROWING AN ERROR MESSAGE IN GUI)
         }
                 
         return encrypted_msg.toString();
     }
     
-    
+    /**
+     * 
+     * @param alg
+     * @param f
+     * @return 
+     */
+    public String getFileHash (String alg, File f){
+        
+        StringBuilder sb = new StringBuilder();
+
+        try{
+            MessageDigest alg_dig = MessageDigest.getInstance(alg);
+            
+            try(FileInputStream fis = new FileInputStream(f);
+                DigestInputStream dgis = new DigestInputStream(fis, alg_dig);){
+                
+                //Clean Digest
+                if (dgis.read() != -1);
+                
+                /**
+                 * Digest FileData through DigestInputStream 
+                 * Then write the data with a format of 2 integers, 
+                 * this includes hex values
+                 */
+                byte [] dig = alg_dig.digest();
+                for (byte b : dig) {
+                    sb.append(String.format("%02x", b));
+                }                           
+
+            }catch (IOException ex){
+                System.err.println("File not found");
+                //TODO (THROWING AN ERROR MESSAGE IN GUI)
+            }
+        } catch (NoSuchAlgorithmException ex){
+            System.err.println("Algorithm not found");
+            //TODO (THROWING AN ERROR MESSAGE IN GUI)
+        }
+
+        
+        return sb.toString();
+    }
     
 }

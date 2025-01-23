@@ -28,10 +28,9 @@ import javax.crypto.spec.SecretKeySpec;
  * 
  * @author aitor
  */
-public class AESKeyGen {
+public class AESKeyGen implements Salt{
     
-    private static final String CIPHER = "AES";
-    byte[] salt;
+    private static final String CIPHER = "AES";    
     
     public String keyGen (String pswd, int keySize){    
         int it_count = roundSelector(keySize);
@@ -60,18 +59,14 @@ public class AESKeyGen {
         return rounds;
     }
     
-    private byte[] generateSalt (){
-        SecureRandom srng = new SecureRandom();
-        
-        srng.
-    }
     
-    public List<String> possibleAlgorithms (){
-        Cipher c = Cipher.getInstance(CIPHER);
-        Provider p = c.getProvider();
-        Set<Provider.Service> services = p.getServices();
-        for (Provider.Service service : services) {
-            
-        }
-    }
+    
+//    public List<String> possibleAlgorithms (){
+//        Cipher c = Cipher.getInstance(CIPHER);
+//        Provider p = c.getProvider();
+//        Set<Provider.Service> services = p.getServices();
+//        for (Provider.Service service : services) {
+//            
+//        }
+//    }
 }

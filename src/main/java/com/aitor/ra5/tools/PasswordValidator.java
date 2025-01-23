@@ -10,4 +10,9 @@ package com.aitor.ra5.tools;
  */
 public class PasswordValidator {
     
+    private String pattern = "";
+    public static int pswdVal(String pswd){
+        int i = -1;
+        if(pswd)
+    }
 }

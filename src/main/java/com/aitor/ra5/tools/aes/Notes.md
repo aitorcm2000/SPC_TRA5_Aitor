@@ -4,8 +4,6 @@
 
 This document is mainly an informative piece of documentation where I study the technologies used in the project, this is just a compilation of notes that I would,  otherwise, take in the project comments but instead I write them here in search of improving the clarity and cleanlines of the code.
 
-
-
 #### Variants of AES
 
 | Name    | Key Size | Block Size | Num Rounds |
@@ -19,8 +17,6 @@ Mainly the difference resides on the size of the Key, a larger **Key Size will r
 The number of possible values are as follows:    $2^{KeySize}$
 
 Which makes a cyber-security attack extremely time cosuming and complicated.
-
-
 
 #### Generating AES Keys in Java
 

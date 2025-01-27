@@ -4,8 +4,10 @@
  */
 package com.aitor.ra5.tools.aes;
 
+import java.security.NoSuchAlgorithmException;
 import java.security.Provider;
 import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 import java.util.Set;
 import javax.crypto.Cipher;
@@ -32,34 +34,42 @@ public class AESKeyGen implements Salt{
     
     private static final String CIPHER = "AES";    
     
-    public String keyGen (String pswd, int keySize){    
-        int it_count = roundSelector(keySize);
+    public SecretKey keyGen (String pswd, int keySize){    
+        int it_count = 2^16;
+        SecretKey sk = null;
         
         PBEKeySpec pbeks = new PBEKeySpec(pswd.toCharArray(), salt,
                 it_count, keySize);
-        SecretKey sk = SecretKeyFactory.getInstance(CIPHER).generateSecret(pbeks);
-        SecretKeySpec sks = new SecretKeySpec(sk.getEncoded(), CIPHER);
-    }
-    
-    private int roundSelector(int keySize){
-        int rounds;
-        switch (keySize) {
-            case 128:
-                rounds = 10;
-                break;
-            case 192:
-                rounds = 12;
-                break;
-            case 256:
-                rounds = 14;
-                break;
-            default:
-                rounds = 10;
+        try{
+            SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+            byte[] key = skf.generateSecret(pbeks).getEncoded();
+            sk = new SecretKeySpec(key, CIPHER);            
+        }catch(NoSuchAlgorithmException ex){
+            System.err.println("There is no algorithm "+ex.getMessage());
+        }catch(InvalidKeySpecException ex){
+            System.err.println("PBEkey bad "+ex.getMessage());
         }
-        return rounds;
+        
+        return sk;
     }
     
-    
+//    private int roundSelector(int keySize){
+//        int rounds;
+//        switch (keySize) {
+//            case 128:
+//                rounds = 10;
+//                break;
+//            case 192:
+//                rounds = 12;
+//                break;
+//            case 256:
+//                rounds = 14;
+//                break;
+//            default:
+//                rounds = 10;
+//        }
+//        return rounds;
+//    }        
     
 //    public List<String> possibleAlgorithms (){
 //        Cipher c = Cipher.getInstance(CIPHER);
@@ -68,5 +78,5 @@ public class AESKeyGen implements Salt{
 //        for (Provider.Service service : services) {
 //            
 //        }
-//    }
+//    }        
 }

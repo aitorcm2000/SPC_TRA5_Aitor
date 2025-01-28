@@ -11,10 +11,12 @@ import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
+import javax.crypto.spec.IvParameterSpec;
 
 /**
  *
@@ -23,11 +25,11 @@ import javax.crypto.spec.SecretKeySpec;
 public class AESFileEncryption extends AESKeyGen{
     
     private final String ALGORITHM ="AES/CTR/NoPadding";
-    private Cipher CIPHER;
+    private Cipher cipher;
 
-    public AESFileEncryption(Cipher CIPHER) {
+    public AESFileEncryption() {
         try{
-            this.CIPHER = Cipher.getInstance(ALGORITHM);
+            this.cipher = Cipher.getInstance(ALGORITHM);
         }catch (NoSuchAlgorithmException ex){
             System.err.println("Algorithm not valid : "+ex.getMessage());
         }catch (NoSuchPaddingException ex){
@@ -36,33 +38,50 @@ public class AESFileEncryption extends AESKeyGen{
     }
     
         
-    public void fileEncryption(File ogFile , String password, int keySize){
-        File resFile = new File(ogFile.getAbsolutePath()+".enc");
-        SecretKey key = keyGen(password, keySize);
+    public void fileEncryption(File ogFile , String pswd, int keySize){
+        File encFile = new File(ogFile.getAbsolutePath()+".enc");
+        SecretKey key = keyGen(pswd, keySize);
         try{
-            CIPHER.init(Cipher.ENCRYPT_MODE,key,CIPHER.getParameters());
+            cipher.init(Cipher.ENCRYPT_MODE,key, new IvParameterSpec(salt));
             try(
                 FileInputStream fis = new FileInputStream(ogFile);
-                FileOutputStream fos = new FileOutputStream(resFile))
+                FileOutputStream fos = new FileOutputStream(encFile))
             {
                 byte[] buffer = new byte[64];
-                int bytesReaded = 0;
+                byte[] encBuffer;
+                int bytesReaded;
                 
-                while (fis.read(buffer) != -1){
-                    fis.
+                while ((bytesReaded = fis.read(buffer)) != -1){                    
+                    encBuffer = cipher.update(buffer, 0, bytesReaded);
+                    if(encBuffer!=null){
+                        fos.write(encBuffer);
+                    }
                 }
-            }catch (IOException ex){
                 
-            }
-        }catch(InvalidAlgorithmParameterException ex){
-            
-            StringBuilder sb = new StringBuilder();
-            sb.append("Invalid algorith error in file encryption");
-            sb.append("\n\tAlgorithm used: "+ALGORITHM);
-            sb.append("\nException msg: ");
-            sb.append(ex.getMessage());
-            System.err.println(sb.toString());
-            
+                byte[] encDataResult = cipher.doFinal();
+                
+                if (encDataResult != null){
+                    fos.write(encDataResult);
+                }
+                
+                
+            }catch (IOException ex){
+                StringBuilder sb = new StringBuilder();
+                sb.append("File stream error in ");
+                sb.append(ALGORITHM);
+                sb.append(" file encryption :\n");
+                sb.append(ex.getMessage());
+                                
+                System.err.println(sb.toString());
+            }catch (IllegalBlockSizeException ex){
+                StringBuilder sb = new StringBuilder();
+                sb.append("Cuacale no se que error es esto ");
+                sb.append(ex.getMessage());
+                System.err.println(sb.toString());
+            }catch (BadPaddingException ex){
+                System.out.println("Cuacale no se que error es este "
+                        +ex.getMessage());
+            }   
         }catch(InvalidKeyException ex){
             
             StringBuilder sb = new StringBuilder();
@@ -71,6 +90,51 @@ public class AESFileEncryption extends AESKeyGen{
             sb.append(ex.getMessage());
             System.err.println(sb.toString());
             
+        }catch (InvalidAlgorithmParameterException ex){
+            System.err.println(ex.getMessage());
+        }
+    }
+    
+    public void fileDeEncryption (File encFile, String pswd, int keySize){
+        File ogFile = new File(encFile.getAbsolutePath().replace(".enc", ""));
+        SecretKey key = keyGen(pswd, keySize);
+        try{
+            cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(salt));
+            try(
+                FileInputStream fis = new FileInputStream(encFile);
+                FileOutputStream fos = new FileOutputStream(ogFile))
+            {
+                byte[] buffer = new byte[64];
+                byte[] dencBuffer;
+                int bytesReaded;
+                while ((bytesReaded = fis.read(buffer)) != -1){
+                    dencBuffer = cipher.update(buffer, 0, bytesReaded);
+                    if(dencBuffer!=null){
+                        fos.write(dencBuffer);
+                    }
+                }
+                
+                byte[] dencDataResult = cipher.doFinal();
+                
+                if (dencDataResult != null){
+                    fos.write(dencDataResult);
+                }
+            }catch (IOException ex){
+                System.err.println("a "+ex.getMessage());
+            }catch (BadPaddingException ex){
+                System.err.println("b "+ex.getMessage());
+            }catch (IllegalBlockSizeException ex){
+                System.err.println(ex.getMessage());
+            }           
+            
+        }catch (InvalidKeyException ex){
+            StringBuilder sb = new StringBuilder();
+            sb.append("Invalid key in file dencryption");            
+            sb.append("\nException msg: ");
+            sb.append(ex.getMessage());
+            System.err.println(sb.toString());
+        }catch (InvalidAlgorithmParameterException ex){
+            System.err.println(ex.getMessage());
         }
     }
 }

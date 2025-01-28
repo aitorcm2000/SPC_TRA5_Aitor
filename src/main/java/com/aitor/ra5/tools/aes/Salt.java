@@ -15,4 +15,5 @@ public interface Salt {
             (byte) 0x42, (byte) 0xD8, (byte) 0x7A, (byte) 0x91,
             (byte) 0x2C, (byte) 0xB5, (byte) 0xE3, (byte) 0x8F
         };
+    
 }

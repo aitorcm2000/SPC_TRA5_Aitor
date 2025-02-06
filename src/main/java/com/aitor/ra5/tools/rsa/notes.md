@@ -4,8 +4,6 @@
 
 This document is mainly an informative piece of documentation where I study the technologies used in the project, this is just a compilation of notes that I would, otherwise, take in the project comments but instead I write them here in search of improving the clarity and cleanlines of the code.
 
-
-
 #### What is RSA?
 
 RSA is an asymmetric  or public key cryptographic algorithm, this is implies the use  of two sets of keys : A Private Key and a Public Key.
@@ -29,8 +27,6 @@ An example of an exchange through RSA would be as follows:
 3. Sender sends the message to Receiver
 
 4. Receiver decrypts the message using its own Private Key
-
-
 
 #### Knowledge gathered - Let's make it work
 
@@ -79,5 +75,3 @@ An example of an exchange through RSA would be as follows:
       3. We can verify the proess through assertEquals
    
    2. 
-
-

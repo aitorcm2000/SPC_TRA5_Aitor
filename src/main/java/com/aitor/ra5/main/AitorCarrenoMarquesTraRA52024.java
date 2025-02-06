@@ -7,6 +7,7 @@ package com.aitor.ra5.main;
 import com.aitor.ra5.tools.HashTool;
 import com.aitor.ra5.tools.aes.AESFileEncryption;
 import com.aitor.ra5.tools.aes.AESKeyGen;
+import com.aitor.ra5.tools.rsa.RSAKeyPairManager;
 import java.io.File;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
 public class AitorCarrenoMarquesTraRA52024 {
 
     public static void main(String[] args) {
-        pruebas();
+        pruebasRSA();
     }
     
     private static void pruebas(){
@@ -34,5 +35,10 @@ public class AitorCarrenoMarquesTraRA52024 {
 //        afe.fileEncryption(f, "contraseña", 256);
         File encf = new File("/home/aitor/Documents/UD5-Secure-Programing-Java-PRACTICE .pdf.enc");
         afe.fileDeEncryption(encf, "contraseña", 256);
+    }
+    
+    private static void pruebasRSA(){
+        RSAKeyPairManager rkpm = new RSAKeyPairManager();
+//        rkpm.genKeyFileGen("Prueba");        
     }
 }

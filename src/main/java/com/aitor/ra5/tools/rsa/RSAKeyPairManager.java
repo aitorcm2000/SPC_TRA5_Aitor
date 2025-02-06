@@ -27,10 +27,10 @@ import java.security.spec.X509EncodedKeySpec;
  */
 public class RSAKeyPairManager extends RSAKeyPairGenerator {
 
-    private final String PATH = "$HOME/.RSAkeys";
+    private final String PATH = "RSAkeys";
 
     public int genKeyFileGen(String nombre, String path) {        
-        File RSAdir = new File(path);
+        File RSAdir = new File(PATH);
         
         if(!RSAdir.exists()){
             System.out.println("Making RSAkey directory");

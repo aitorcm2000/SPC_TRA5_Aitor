@@ -11,3 +11,6 @@ behind the secure management of files through encryption and decryption.
 - Being able to encrypt and decrypt files with AES (Symmetrical Encryption)
 - Being able to generate RSA keys
 - Being able to encrypt and decrypt files with RSA (Asymmetrical Encryption)
+- Being able to digitally sign files
+- Being able to log the proccesses and errors in the app
+- Being able to implement all of the above within a graphical user interface

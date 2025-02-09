@@ -26,16 +26,6 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pan_aes = new javax.swing.JPanel();
-        aes_tf_file = new javax.swing.JTextField();
-        aes_ptf_pswd = new javax.swing.JPasswordField();
-        aes_rbut_enc = new javax.swing.JRadioButton();
-        aes_rbut_dec = new javax.swing.JRadioButton();
-        aes_but_file = new javax.swing.JButton();
-        aes_checkb_pswd = new javax.swing.JCheckBox();
-        aes_but_execute = new javax.swing.JButton();
-        aes_checkb_keysize = new javax.swing.JCheckBox();
-        aes_combob_keysize = new javax.swing.JComboBox<>();
         pan_hash = new javax.swing.JPanel();
         hash_rbut_text = new javax.swing.JRadioButton();
         hash_rbut_file = new javax.swing.JRadioButton();
@@ -63,11 +53,22 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         key_tf_file = new javax.swing.JTextField();
         key_checkb_dir = new javax.swing.JCheckBox();
+        pan_aes = new javax.swing.JPanel();
+        aes_tf_file = new javax.swing.JTextField();
+        aes_ptf_pswd = new javax.swing.JPasswordField();
+        aes_rbut_enc = new javax.swing.JRadioButton();
+        aes_rbut_dec = new javax.swing.JRadioButton();
+        aes_but_file = new javax.swing.JButton();
+        aes_checkb_pswd = new javax.swing.JCheckBox();
+        aes_but_execute = new javax.swing.JButton();
+        aes_checkb_keysize = new javax.swing.JCheckBox();
+        aes_combob_keysize = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ta_info = new javax.swing.JTextArea();
         pan_tools = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jMenuBar1 = new javax.swing.JMenuBar();
         menu_tools = new javax.swing.JMenu();
         menu_hash = new javax.swing.JMenuItem();
@@ -76,114 +77,259 @@ public class MainFrame extends javax.swing.JFrame {
         menu_rsa = new javax.swing.JMenuItem();
         menu_keys = new javax.swing.JMenuItem();
 
-        pan_aes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pan_aes.add(aes_tf_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 260, -1));
-        pan_aes.add(aes_ptf_pswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 260, -1));
-
-        aes_rbut_enc.setSelected(true);
-        aes_rbut_enc.setText("Encryption");
-        pan_aes.add(aes_rbut_enc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
-
-        aes_rbut_dec.setText("Decryption");
-        pan_aes.add(aes_rbut_dec, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
-
-        aes_but_file.setText("Choose file");
-        aes_but_file.setActionCommand("aes_but_file");
-        pan_aes.add(aes_but_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
-
-        aes_checkb_pswd.setSelected(true);
-        aes_checkb_pswd.setText("Password");
-        pan_aes.add(aes_checkb_pswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
-
-        aes_but_execute.setText("Execute");
-        aes_but_execute.setActionCommand("aes_but_execute");
-        pan_aes.add(aes_but_execute, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
-
-        aes_checkb_keysize.setText("Key Size");
-        pan_aes.add(aes_checkb_keysize, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
-
-        aes_combob_keysize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "128", "192", "256" }));
-        aes_combob_keysize.setEnabled(false);
-        pan_aes.add(aes_combob_keysize, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
-
-        pan_hash.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         hash_rbut_text.setText("Text");
         hash_rbut_text.setActionCommand("hash_rbut_text");
-        pan_hash.add(hash_rbut_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         hash_rbut_file.setText("File");
         hash_rbut_file.setActionCommand("hash_rbut_file");
-        pan_hash.add(hash_rbut_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
-        pan_hash.add(hash_tf_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 240, -1));
 
         hash_but_file.setText("Choose from Files");
         hash_but_file.setActionCommand("hash_but_file");
-        pan_hash.add(hash_but_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 130, -1));
 
         jScrollPane2.setViewportView(hash_tp_msg);
 
-        pan_hash.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 420, 180));
-
         hash_but_execute.setText("Execute");
         hash_but_execute.setActionCommand("hash_but_execute");
-        pan_hash.add(hash_but_execute, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, -1));
 
         hash_combob_alg.setMaximumRowCount(50);
-        pan_hash.add(hash_combob_alg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, 130, -1));
 
-        pan_rsa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pan_rsa.add(rsa_tf_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 260, -1));
-        pan_rsa.add(rsa_ptf_pswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 260, -1));
+        javax.swing.GroupLayout pan_hashLayout = new javax.swing.GroupLayout(pan_hash);
+        pan_hash.setLayout(pan_hashLayout);
+        pan_hashLayout.setHorizontalGroup(
+            pan_hashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_hashLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(hash_rbut_text)
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pan_hashLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(hash_rbut_file)
+                .addGap(267, 267, 267)
+                .addComponent(hash_combob_alg, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pan_hashLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(hash_tf_file, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pan_hashLayout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(hash_but_file, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(210, 210, 210)
+                .addComponent(hash_but_execute))
+        );
+        pan_hashLayout.setVerticalGroup(
+            pan_hashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_hashLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(pan_hashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hash_rbut_text)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(pan_hashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hash_rbut_file)
+                    .addComponent(hash_combob_alg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addComponent(hash_tf_file, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(pan_hashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hash_but_file)
+                    .addComponent(hash_but_execute)))
+        );
 
         rsa_rbut_enc.setSelected(true);
         rsa_rbut_enc.setText("Encryption");
-        pan_rsa.add(rsa_rbut_enc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         rsa_rbut_dec.setText("Decryption");
-        pan_rsa.add(rsa_rbut_dec, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
         rsa_but_file.setText("Choose file");
         rsa_but_file.setActionCommand("rsa_but_file");
-        pan_rsa.add(rsa_but_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
 
         rsa_checkb_pswd.setSelected(true);
         rsa_checkb_pswd.setText("Password");
-        pan_rsa.add(rsa_checkb_pswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         rsa_but_execute.setText("Execute");
         rsa_but_execute.setActionCommand("rsa_but_execute");
-        pan_rsa.add(rsa_but_execute, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
 
         rsa_key_type.setText("jLabel2");
-        pan_rsa.add(rsa_key_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
         rsa_but_key.setText("Choose File");
         rsa_but_key.setActionCommand("rsa_but_key");
-        pan_rsa.add(rsa_but_key, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
-        pan_rsa.add(rsa_tf_key, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 260, -1));
 
-        pan_key.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pan_key.add(key_tf_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 260, -1));
+        javax.swing.GroupLayout pan_rsaLayout = new javax.swing.GroupLayout(pan_rsa);
+        pan_rsa.setLayout(pan_rsaLayout);
+        pan_rsaLayout.setHorizontalGroup(
+            pan_rsaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_rsaLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(pan_rsaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rsa_rbut_enc)
+                    .addComponent(rsa_rbut_dec))
+                .addGap(37, 37, 37)
+                .addComponent(rsa_tf_file, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(rsa_but_file))
+            .addGroup(pan_rsaLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(rsa_checkb_pswd)
+                .addGap(34, 34, 34)
+                .addComponent(rsa_ptf_pswd, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pan_rsaLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(rsa_key_type))
+            .addGroup(pan_rsaLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(rsa_tf_key, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(rsa_but_key)
+                .addGap(46, 46, 46)
+                .addComponent(rsa_but_execute))
+        );
+        pan_rsaLayout.setVerticalGroup(
+            pan_rsaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_rsaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(pan_rsaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pan_rsaLayout.createSequentialGroup()
+                        .addComponent(rsa_rbut_enc)
+                        .addGap(16, 16, 16)
+                        .addComponent(rsa_rbut_dec))
+                    .addGroup(pan_rsaLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(pan_rsaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rsa_tf_file, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rsa_but_file))))
+                .addGap(66, 66, 66)
+                .addGroup(pan_rsaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rsa_checkb_pswd)
+                    .addComponent(rsa_ptf_pswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
+                .addComponent(rsa_key_type)
+                .addGap(14, 14, 14)
+                .addGroup(pan_rsaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rsa_tf_key, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rsa_but_key)
+                    .addComponent(rsa_but_execute)))
+        );
 
         key_but_dir.setText("Choose file");
         key_but_dir.setActionCommand("key_but_dir");
-        pan_key.add(key_but_dir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, -1, -1));
 
         key_but_execute.setText("Execute");
         key_but_execute.setActionCommand("key_but_execute");
-        pan_key.add(key_but_execute, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
 
         jLabel2.setText("Name");
-        pan_key.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
-        pan_key.add(key_tf_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 260, -1));
 
         key_checkb_dir.setText("Custom Directory");
-        pan_key.add(key_checkb_dir, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+
+        javax.swing.GroupLayout pan_keyLayout = new javax.swing.GroupLayout(pan_key);
+        pan_key.setLayout(pan_keyLayout);
+        pan_keyLayout.setHorizontalGroup(
+            pan_keyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_keyLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jLabel2)
+                .addGap(70, 70, 70)
+                .addComponent(key_tf_name, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pan_keyLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(key_checkb_dir)
+                .addGap(13, 13, 13)
+                .addComponent(key_tf_file, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(key_but_dir))
+            .addGroup(pan_keyLayout.createSequentialGroup()
+                .addGap(480, 480, 480)
+                .addComponent(key_but_execute))
+        );
+        pan_keyLayout.setVerticalGroup(
+            pan_keyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_keyLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addGroup(pan_keyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(key_tf_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(pan_keyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(key_checkb_dir)
+                    .addComponent(key_tf_file, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(key_but_dir))
+                .addGap(84, 84, 84)
+                .addComponent(key_but_execute))
+        );
+
+        aes_rbut_enc.setSelected(true);
+        aes_rbut_enc.setText("Encryption");
+
+        aes_rbut_dec.setText("Decryption");
+
+        aes_but_file.setText("Choose file");
+        aes_but_file.setActionCommand("aes_but_file");
+
+        aes_checkb_pswd.setSelected(true);
+        aes_checkb_pswd.setText("Password");
+
+        aes_but_execute.setText("Execute");
+        aes_but_execute.setActionCommand("aes_but_execute");
+
+        aes_checkb_keysize.setText("Key Size");
+
+        aes_combob_keysize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "128", "192", "256" }));
+        aes_combob_keysize.setEnabled(false);
+
+        javax.swing.GroupLayout pan_aesLayout = new javax.swing.GroupLayout(pan_aes);
+        pan_aes.setLayout(pan_aesLayout);
+        pan_aesLayout.setHorizontalGroup(
+            pan_aesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_aesLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(pan_aesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(aes_rbut_enc)
+                    .addComponent(aes_rbut_dec))
+                .addGap(37, 37, 37)
+                .addComponent(aes_tf_file, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(aes_but_file))
+            .addGroup(pan_aesLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(aes_checkb_pswd)
+                .addGap(34, 34, 34)
+                .addComponent(aes_ptf_pswd, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pan_aesLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(aes_checkb_keysize)
+                .addGap(43, 43, 43)
+                .addComponent(aes_combob_keysize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pan_aesLayout.createSequentialGroup()
+                .addGap(480, 480, 480)
+                .addComponent(aes_but_execute))
+        );
+        pan_aesLayout.setVerticalGroup(
+            pan_aesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_aesLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(pan_aesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pan_aesLayout.createSequentialGroup()
+                        .addComponent(aes_rbut_enc)
+                        .addGap(16, 16, 16)
+                        .addComponent(aes_rbut_dec))
+                    .addGroup(pan_aesLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(pan_aesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(aes_tf_file, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(aes_but_file))))
+                .addGap(66, 66, 66)
+                .addGroup(pan_aesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(aes_checkb_pswd)
+                    .addComponent(aes_ptf_pswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(pan_aesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(aes_checkb_keysize)
+                    .addComponent(aes_combob_keysize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
+                .addComponent(aes_but_execute))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setResizable(false);
 
         ta_info.setEditable(false);
         ta_info.setColumns(20);
@@ -192,8 +338,6 @@ public class MainFrame extends javax.swing.JFrame {
         ta_info.setText("Esto es un texto de prueba\n");
         ta_info.setEnabled(false);
         jScrollPane1.setViewportView(ta_info);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 630, 190));
 
         pan_tools.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
@@ -208,11 +352,43 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 376, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pan_tools, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 630, 380));
-
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel1.setText("Resultado:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(62, 62, 62))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(pan_tools, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(filler1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(pan_tools, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(264, 264, 264)
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
 
         jMenuBar1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -250,11 +426,13 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 742, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -270,6 +448,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JRadioButton aes_rbut_dec;
     public javax.swing.JRadioButton aes_rbut_enc;
     public javax.swing.JTextField aes_tf_file;
+    private javax.swing.Box.Filler filler1;
     public javax.swing.JButton hash_but_execute;
     public javax.swing.JButton hash_but_file;
     public javax.swing.JComboBox<String> hash_combob_alg;

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.aitor</groupId>
     <artifactId>AitorCarrenoMarques-Tra-RA5-2024</artifactId>
-    <version>0.1</version>
+    <version>0.9</version>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
@@ -11,11 +11,31 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE230</version>
         </dependency>
+
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <exec.mainClass>com.aitor.aitorcarrenomarques_tra_ra5.main.AitorCarrenoMarquesTraRA52024</exec.mainClass>
+        <exec.mainClass>com.aitor.ra5.main.AitorCarrenoMarquesTraRA52024</exec.mainClass>
     </properties>
+
+                            
+    <build>  
+        <plugins>  
+            <plugin>  
+                <!-- Build an executable JAR -->  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-jar-plugin</artifactId>  
+                <version>3.1.0</version>  
+                <configuration>  
+                    <archive>  
+                        <manifest>  
+                            <mainClass>com.aitor.ra5.main.AitorCarrenoMarquesTraRA52024</mainClass>
+                        </manifest>  
+                    </archive>  
+                </configuration>  
+            </plugin>  
+        </plugins>  
+    </build>  
 </project>

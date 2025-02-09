@@ -15,17 +15,11 @@ import java.awt.event.ActionListener;
  *
  * @author aitor
  */
-public class Controller{
-   
-    private HashTool ht;
-    private AESFileEncryption aes;
-    private RSAEncryption rsa;  
+public class Controller{   
     private UI_Controller ui;
 
     public Controller() {        
-        this.ht = new HashTool();
-        this.aes = new AESFileEncryption();
-        this.rsa = new RSAEncryption();   
+
         this.ui = new UI_Controller();
     }        
     

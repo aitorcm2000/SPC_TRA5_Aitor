@@ -27,15 +27,15 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         pan_aes = new javax.swing.JPanel();
-        tf_aes_file_finder = new javax.swing.JTextField();
-        ptf_aes_pswd = new javax.swing.JPasswordField();
-        rbut_aes_enc = new javax.swing.JRadioButton();
-        rbut_aes_dec = new javax.swing.JRadioButton();
-        but_aes_file = new javax.swing.JButton();
-        checkb_pswd = new javax.swing.JCheckBox();
-        but_aes_execute = new javax.swing.JButton();
-        checkb_aes_keysize = new javax.swing.JCheckBox();
-        combob_aes_keysize = new javax.swing.JComboBox<>();
+        aes_tf_file = new javax.swing.JTextField();
+        aes_ptf_pswd = new javax.swing.JPasswordField();
+        aes_rbut_enc = new javax.swing.JRadioButton();
+        aes_rbut_dec = new javax.swing.JRadioButton();
+        aes_but_file = new javax.swing.JButton();
+        aes_checkb_pswd = new javax.swing.JCheckBox();
+        aes_but_execute = new javax.swing.JButton();
+        aes_checkb_keysize = new javax.swing.JCheckBox();
+        aes_combob_keysize = new javax.swing.JComboBox<>();
         pan_hash = new javax.swing.JPanel();
         hash_rbut_text = new javax.swing.JRadioButton();
         hash_rbut_file = new javax.swing.JRadioButton();
@@ -44,44 +44,67 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         hash_tp_msg = new javax.swing.JTextPane();
         hash_but_execute = new javax.swing.JButton();
+        hash_combob_alg = new javax.swing.JComboBox<>();
+        pan_rsa = new javax.swing.JPanel();
+        rsa_tf_file = new javax.swing.JTextField();
+        rsa_ptf_pswd = new javax.swing.JPasswordField();
+        rsa_rbut_enc = new javax.swing.JRadioButton();
+        rsa_rbut_dec = new javax.swing.JRadioButton();
+        rsa_but_file = new javax.swing.JButton();
+        rsa_checkb_pswd = new javax.swing.JCheckBox();
+        rsa_but_execute = new javax.swing.JButton();
+        rsa_key_type = new javax.swing.JLabel();
+        rsa_but_key = new javax.swing.JButton();
+        rsa_tf_key = new javax.swing.JTextField();
+        pan_key = new javax.swing.JPanel();
+        key_tf_name = new javax.swing.JTextField();
+        key_but_dir = new javax.swing.JButton();
+        key_but_execute = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        key_tf_file = new javax.swing.JTextField();
+        key_checkb_dir = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        ta_info = new javax.swing.JTextArea();
         pan_tools = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menu_tools = new javax.swing.JMenu();
         menu_hash = new javax.swing.JMenuItem();
         menu_aes = new javax.swing.JMenuItem();
+        menu_rsa_stuff = new javax.swing.JMenu();
         menu_rsa = new javax.swing.JMenuItem();
+        menu_keys = new javax.swing.JMenuItem();
 
         pan_aes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pan_aes.add(tf_aes_file_finder, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 260, -1));
-        pan_aes.add(ptf_aes_pswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 260, -1));
+        pan_aes.add(aes_tf_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 260, -1));
+        pan_aes.add(aes_ptf_pswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 260, -1));
 
-        rbut_aes_enc.setSelected(true);
-        rbut_aes_enc.setText("Encryption");
-        pan_aes.add(rbut_aes_enc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        aes_rbut_enc.setSelected(true);
+        aes_rbut_enc.setText("Encryption");
+        pan_aes.add(aes_rbut_enc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
-        rbut_aes_dec.setText("Decryption");
-        pan_aes.add(rbut_aes_dec, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        aes_rbut_dec.setText("Decryption");
+        pan_aes.add(aes_rbut_dec, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
-        but_aes_file.setText("Choose file");
-        pan_aes.add(but_aes_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
+        aes_but_file.setText("Choose file");
+        aes_but_file.setActionCommand("aes_but_file");
+        pan_aes.add(aes_but_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
 
-        checkb_pswd.setSelected(true);
-        checkb_pswd.setText("Password");
-        pan_aes.add(checkb_pswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        aes_checkb_pswd.setSelected(true);
+        aes_checkb_pswd.setText("Password");
+        pan_aes.add(aes_checkb_pswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
-        but_aes_execute.setText("Execute");
-        pan_aes.add(but_aes_execute, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
+        aes_but_execute.setText("Execute");
+        aes_but_execute.setActionCommand("aes_but_execute");
+        pan_aes.add(aes_but_execute, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
 
-        checkb_aes_keysize.setText("Key Size");
-        pan_aes.add(checkb_aes_keysize, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+        aes_checkb_keysize.setText("Key Size");
+        pan_aes.add(aes_checkb_keysize, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
-        combob_aes_keysize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "128", "192", "256" }));
-        combob_aes_keysize.setEnabled(false);
-        pan_aes.add(combob_aes_keysize, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
+        aes_combob_keysize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "128", "192", "256" }));
+        aes_combob_keysize.setEnabled(false);
+        pan_aes.add(aes_combob_keysize, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
 
         pan_hash.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -106,17 +129,69 @@ public class MainFrame extends javax.swing.JFrame {
         hash_but_execute.setActionCommand("hash_but_execute");
         pan_hash.add(hash_but_execute, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, -1));
 
+        hash_combob_alg.setMaximumRowCount(50);
+        pan_hash.add(hash_combob_alg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, 130, -1));
+
+        pan_rsa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pan_rsa.add(rsa_tf_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 260, -1));
+        pan_rsa.add(rsa_ptf_pswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 260, -1));
+
+        rsa_rbut_enc.setSelected(true);
+        rsa_rbut_enc.setText("Encryption");
+        pan_rsa.add(rsa_rbut_enc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+
+        rsa_rbut_dec.setText("Decryption");
+        pan_rsa.add(rsa_rbut_dec, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+
+        rsa_but_file.setText("Choose file");
+        rsa_but_file.setActionCommand("rsa_but_file");
+        pan_rsa.add(rsa_but_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
+
+        rsa_checkb_pswd.setSelected(true);
+        rsa_checkb_pswd.setText("Password");
+        pan_rsa.add(rsa_checkb_pswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+
+        rsa_but_execute.setText("Execute");
+        rsa_but_execute.setActionCommand("rsa_but_execute");
+        pan_rsa.add(rsa_but_execute, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
+
+        rsa_key_type.setText("jLabel2");
+        pan_rsa.add(rsa_key_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+
+        rsa_but_key.setText("Choose File");
+        rsa_but_key.setActionCommand("rsa_but_key");
+        pan_rsa.add(rsa_but_key, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+        pan_rsa.add(rsa_tf_key, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 260, -1));
+
+        pan_key.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pan_key.add(key_tf_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 260, -1));
+
+        key_but_dir.setText("Choose file");
+        key_but_dir.setActionCommand("key_but_dir");
+        pan_key.add(key_but_dir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, -1, -1));
+
+        key_but_execute.setText("Execute");
+        key_but_execute.setActionCommand("key_but_execute");
+        pan_key.add(key_but_execute, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
+
+        jLabel2.setText("Name");
+        pan_key.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+        pan_key.add(key_tf_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 260, -1));
+
+        key_checkb_dir.setText("Custom Directory");
+        pan_key.add(key_checkb_dir, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Esto es un texto de prueba\n");
-        jTextArea1.setEnabled(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        ta_info.setEditable(false);
+        ta_info.setColumns(20);
+        ta_info.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        ta_info.setRows(5);
+        ta_info.setText("Esto es un texto de prueba\n");
+        ta_info.setEnabled(false);
+        jScrollPane1.setViewportView(ta_info);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 630, 190));
 
@@ -154,10 +229,18 @@ public class MainFrame extends javax.swing.JFrame {
         menu_aes.setActionCommand("menu_aes");
         menu_tools.add(menu_aes);
 
+        menu_rsa_stuff.setText("RSA");
+
         menu_rsa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        menu_rsa.setText("RSA");
+        menu_rsa.setText("RSA Operations");
         menu_rsa.setActionCommand("menu_rsa");
-        menu_tools.add(menu_rsa);
+        menu_rsa_stuff.add(menu_rsa);
+
+        menu_keys.setText("RSA Keys");
+        menu_keys.setActionCommand("menu_keys");
+        menu_rsa_stuff.add(menu_keys);
+
+        menu_tools.add(menu_rsa_stuff);
 
         jMenuBar1.add(menu_tools);
 
@@ -178,33 +261,54 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton but_aes_execute;
-    public javax.swing.JButton but_aes_file;
-    public javax.swing.JCheckBox checkb_aes_keysize;
-    public javax.swing.JCheckBox checkb_pswd;
-    public javax.swing.JComboBox<String> combob_aes_keysize;
+    public javax.swing.JButton aes_but_execute;
+    public javax.swing.JButton aes_but_file;
+    public javax.swing.JCheckBox aes_checkb_keysize;
+    public javax.swing.JCheckBox aes_checkb_pswd;
+    public javax.swing.JComboBox<String> aes_combob_keysize;
+    public javax.swing.JPasswordField aes_ptf_pswd;
+    public javax.swing.JRadioButton aes_rbut_dec;
+    public javax.swing.JRadioButton aes_rbut_enc;
+    public javax.swing.JTextField aes_tf_file;
     public javax.swing.JButton hash_but_execute;
     public javax.swing.JButton hash_but_file;
+    public javax.swing.JComboBox<String> hash_combob_alg;
     public javax.swing.JRadioButton hash_rbut_file;
     public javax.swing.JRadioButton hash_rbut_text;
     public javax.swing.JTextField hash_tf_file;
     public javax.swing.JTextPane hash_tp_msg;
     public javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     public javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JTextArea jTextArea1;
+    public javax.swing.JButton key_but_dir;
+    public javax.swing.JButton key_but_execute;
+    public javax.swing.JCheckBox key_checkb_dir;
+    public javax.swing.JTextField key_tf_file;
+    public javax.swing.JTextField key_tf_name;
     public javax.swing.JMenuItem menu_aes;
     public javax.swing.JMenuItem menu_hash;
+    public javax.swing.JMenuItem menu_keys;
     public javax.swing.JMenuItem menu_rsa;
+    private javax.swing.JMenu menu_rsa_stuff;
     public javax.swing.JMenu menu_tools;
     public javax.swing.JPanel pan_aes;
     public javax.swing.JPanel pan_hash;
+    public javax.swing.JPanel pan_key;
+    public javax.swing.JPanel pan_rsa;
     public javax.swing.JPanel pan_tools;
-    public javax.swing.JPasswordField ptf_aes_pswd;
-    public javax.swing.JRadioButton rbut_aes_dec;
-    public javax.swing.JRadioButton rbut_aes_enc;
-    public javax.swing.JTextField tf_aes_file_finder;
+    public javax.swing.JButton rsa_but_execute;
+    public javax.swing.JButton rsa_but_file;
+    public javax.swing.JButton rsa_but_key;
+    public javax.swing.JCheckBox rsa_checkb_pswd;
+    public javax.swing.JLabel rsa_key_type;
+    public javax.swing.JPasswordField rsa_ptf_pswd;
+    public javax.swing.JRadioButton rsa_rbut_dec;
+    public javax.swing.JRadioButton rsa_rbut_enc;
+    public javax.swing.JTextField rsa_tf_file;
+    public javax.swing.JTextField rsa_tf_key;
+    public javax.swing.JTextArea ta_info;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,6 +12,7 @@ import com.aitor.ra5.tools.rsa.RSAEncryption;
 import com.aitor.ra5.tools.rsa.RSAKeyPairManager;
 import java.io.File;
 import java.security.KeyPair;
+import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.List;
 
@@ -35,10 +36,7 @@ public class AitorCarrenoMarquesTraRA52024 {
 //        System.out.println(ht.getHash("SHA-256", "Este es un mensaje a encriptar"));
 //        File f = new File("/home/aitor/Documents/UD5-Secure-Programing-Java-PRACTICE.pdf");
 //        System.out.println(ht.getFileHash("SHA-256", f));
-        RSAEncryption rsae = new RSAEncryption();
-        rsae.genKeyFileGen("prueba", "");
-        PublicKey pk = rsae.publickeyRetreiver("RSAkeys/prueba.pub");
-        rsae.rsaFileEnc("/home/aitor/Documents/UD5-Secure-Programing-Java-PRACTICE.pdf", pk);
+
 //        AESFileEncryption afe = new AESFileEncryption();
 //        afe.fileEncryption(f, "contraseña", 256);
         File encf = new File("/home/aitor/Documents/UD5-Secure-Programing-Java-PRACTICE.pdf.enc");
@@ -47,7 +45,14 @@ public class AitorCarrenoMarquesTraRA52024 {
     
     private static void pruebasRSA(){
         RSAKeyPairManager rkpm = new RSAKeyPairManager();
-//        rkpm.genKeyFileGen("Prueba");        
+        RSAEncryption rsae = new RSAEncryption();
+        rsae.genKeyFileGen("prueba", "");
+        PublicKey pk = rsae.publickeyRetreiver("RSAkeys/prueba.pub");
+        PrivateKey prk = rsae.privatekeyRetreiver("RSAkeys/prueba.sec");
+        File f = new File("/home/aitor/Documents/UD5-Secure-Programing-Java-PRACTICE.pdf");
+        System.out.println("Original size "+f.length());
+//        rsae.fileEnc("/home/aitor/Documents/UD5-Secure-Programing-Java-PRACTICE.pdf", pk, "");       
+        rsae.fileDec("/home/aitor/Documents/UD5-Secure-Programing-Java-PRACTICE.pdf.enc", prk,"");
     }
     
     private static void pruebasAES(){
@@ -55,7 +60,7 @@ public class AitorCarrenoMarquesTraRA52024 {
         File file = new File("/home/aitor/Documents/Enlace-a-repo-contactos-aitor.txt");
         File defile = new File("/home/aitor/Documents/Enlace-a-repo-contactos-aitor.txt.enc");
         aes.fileEncryption(file, "", 256);
-        aes.fileDeEncryption(defile, "", 256);
+        aes.fileDecryption(defile, "", 256);
         
     }
     

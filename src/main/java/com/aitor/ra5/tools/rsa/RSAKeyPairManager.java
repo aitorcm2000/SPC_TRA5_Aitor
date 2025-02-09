@@ -25,7 +25,12 @@ import java.security.spec.X509EncodedKeySpec;
 public class RSAKeyPairManager extends RSAKeyPairGenerator {
 
     private final String PATH = "RSAkeys";
-
+    /**
+     * Generation of the Key Files for the public and private key
+     * @param nombre
+     * @param path
+     * @return 
+     */
     public int genKeyFileGen(String nombre, String path) {
         File DIR = null;
         if (path.isEmpty()) {
@@ -79,7 +84,7 @@ public class RSAKeyPairManager extends RSAKeyPairGenerator {
     }
 
     /**
-     *
+     * Recovers a Public Key from a .pub key file
      * @param path
      * @return can return null, if so it couldn't find the public key
      */
@@ -107,6 +112,11 @@ public class RSAKeyPairManager extends RSAKeyPairGenerator {
         return pk;
     }
 
+    /**
+     * Recovers a Private Key from a .sec key file
+     * @param path
+     * @return can return null, if so it couldn't find the private key
+     */
     public PrivateKey privatekeyRetreiver(String path) {
         File privfile = new File(path);
         PrivateKey pk = null;

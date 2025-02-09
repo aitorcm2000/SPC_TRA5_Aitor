@@ -18,8 +18,6 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.SecretKeySpec;
 
 
 /**
@@ -33,6 +31,17 @@ public class RSAEncryption extends RSAKeyPairManager {
         this.aes = new AESFileEncryption();
     }
     
+    /**
+     * A method to encrypt large files using a combination of RSA encryption and
+     * AES encryption.
+     * RSA encrypts the AES key
+     * Key is stored in a file alongside the encrypted file
+     * AES encrypts the file using the RSA encrypted key
+     * @param path
+     * @param pk
+     * @param pswd
+     * @return 
+     */
     public int fileEnc(String path,PublicKey pk, String pswd){
         int result = 0;
         File ogFile = new File(path);        
@@ -75,6 +84,17 @@ public class RSAEncryption extends RSAKeyPairManager {
         return result;
     }
     
+    /**
+     * A method to decrypt large files using a combination of RSA encryption and
+     * AES decryption.
+     * Encrypted key is retrieved from the file
+     * RSA decrypts the AES key
+     * AES decrypts the file using the RSA decrypted key
+     * @param path
+     * @param pk
+     * @param pswd
+     * @return 
+     */
     public int fileDec(String path, PrivateKey pk, String pswd){
         int result = 0;
         File encFile = new File(path);

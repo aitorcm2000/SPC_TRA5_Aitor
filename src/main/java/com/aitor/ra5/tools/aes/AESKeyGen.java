@@ -8,6 +8,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.Provider;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.List;
 import java.util.Set;
 import javax.crypto.Cipher;
@@ -33,9 +35,9 @@ import javax.crypto.spec.SecretKeySpec;
 public class AESKeyGen implements Salt{
     
     private static final String CIPHER = "AES";    
+    private static final int it_count = 2^16;
     
-    public SecretKey keyGen (String pswd, int keySize){    
-        int it_count = 2^16;
+    public SecretKey keyGen (String pswd, int keySize){            
         SecretKey sk = null;
         
         PBEKeySpec pbeks = new PBEKeySpec(pswd.toCharArray(), salt,
@@ -51,32 +53,28 @@ public class AESKeyGen implements Salt{
         }
         
         return sk;
-    }
+    }    
     
-//    private int roundSelector(int keySize){
-//        int rounds;
-//        switch (keySize) {
-//            case 128:
-//                rounds = 10;
-//                break;
-//            case 192:
-//                rounds = 12;
-//                break;
-//            case 256:
-//                rounds = 14;
-//                break;
-//            default:
-//                rounds = 10;
-//        }
-//        return rounds;
-//    }        
+    public SecretKey keyGen (byte[] encoded){    
+        SecretKey sk = new SecretKeySpec(encoded, CIPHER);
+                
+        return sk;
+    }    
     
-//    public List<String> possibleAlgorithms (){
-//        Cipher c = Cipher.getInstance(CIPHER);
-//        Provider p = c.getProvider();
-//        Set<Provider.Service> services = p.getServices();
-//        for (Provider.Service service : services) {
-//            
-//        }
-//    }        
+    public SecretKey keyGen (String pswd, byte[] encoded){    
+        SecretKey sk = null;        
+        PBEKeySpec spc = new PBEKeySpec(pswd.toCharArray(), encoded, it_count, 256);
+        try{
+            SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");            
+            byte[] key = skf.generateSecret(spc).getEncoded();            
+            sk = new SecretKeySpec(key, CIPHER);            
+        }catch(NoSuchAlgorithmException ex){
+            System.err.println("There is no algorithm "+ex.getMessage());
+        }catch(InvalidKeySpecException ex){
+            System.err.println("PBEkey2 bad "+ex.getLocalizedMessage());
+        }
+        
+        return sk;
+    }    
+     
 }

@@ -6,11 +6,8 @@ package com.aitor.ra5.tools.rsa;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
@@ -18,8 +15,8 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.EncodedKeySpec;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-
 
 /**
  *
@@ -27,20 +24,26 @@ import java.security.spec.X509EncodedKeySpec;
  */
 public class RSAKeyPairManager extends RSAKeyPairGenerator {
 
-    private final String PATH = "$HOME/.RSAkeys";
+    private final String PATH = "RSAkeys";
 
-    public int genKeyFileGen(String nombre, String path) {        
-        File RSAdir = new File(path);
-        
-        if(!RSAdir.exists()){
-            System.out.println("Making RSAkey directory");
-            RSAdir.mkdirs();
-        }else{
-            System.out.println("RSAkey directory already exists");
+    public int genKeyFileGen(String nombre, String path) {
+        File DIR = null;
+        if (path.isEmpty()) {
+            DIR = new File(PATH);
+            
+            if (!DIR.exists()) {
+                System.out.println("Making RSAkey directory");
+                DIR.mkdirs();
+            } else {
+                System.out.println("RSAkey directory already exists");
+            }
+        } else {
+            DIR = new File(path);
         }
         
-        File publicKeyFile = new File(RSAdir,nombre + ".pub");
-        File privateKeyFile = new File(RSAdir,nombre + ".sec");
+
+        File publicKeyFile = new File(DIR, nombre + ".pub");
+        File privateKeyFile = new File(DIR, nombre + ".sec");
         int result = 0;
 
         if (!publicKeyFile.exists() || !privateKeyFile.exists()) {
@@ -71,60 +74,60 @@ public class RSAKeyPairManager extends RSAKeyPairGenerator {
         } else {
             System.out.println("Keys already exist");
         }
-        
-        return result;        
+
+        return result;
     }
-    
+
     /**
-     * 
+     *
      * @param path
      * @return can return null, if so it couldn't find the public key
      */
-    public PublicKey publickeyRetreiver (String path){
+    public PublicKey publickeyRetreiver(String path) {
         File pubfile = new File(path);
         PublicKey pk = null;
-        try(FileInputStream fis = new FileInputStream(pubfile)){
+        try (FileInputStream fis = new FileInputStream(pubfile)) {
             byte[] pubBytes = fis.readAllBytes();
             KeyFactory keyf = KeyFactory.getInstance("RSA");
             EncodedKeySpec encks = new X509EncodedKeySpec(pubBytes);
             pk = keyf.generatePublic(encks);
-        } catch (IOException ex){
-            System.err.println("Error finding public key: "+ex.getMessage());
+        } catch (IOException ex) {
+            System.err.println("Error finding public key: " + ex.getMessage());
             //TODO show exception on UI            
-        } catch (NoSuchAlgorithmException ex){
+        } catch (NoSuchAlgorithmException ex) {
             System.err.println("Couldn't find algorithm in "
-                    + "publickeyRetreiver: "+ex.getMessage());
+                    + "publickeyRetreiver: " + ex.getMessage());
             //TODO show exception on UI
-        } catch (InvalidKeySpecException ex){
+        } catch (InvalidKeySpecException ex) {
             System.err.println("Invalid key spec at "
-                    + "publickeyRetreiver: "+ex.getMessage());
+                    + "publickeyRetreiver: " + ex.getMessage());
             //TODO show exception on UI
         }
-        
+
         return pk;
     }
-    
-    public PrivateKey priatekeyRetreiver (String path){
+
+    public PrivateKey privatekeyRetreiver(String path) {
         File privfile = new File(path);
         PrivateKey pk = null;
-        try(FileInputStream fis = new FileInputStream(privfile)){
+        try (FileInputStream fis = new FileInputStream(privfile)) {
             byte[] privBytes = fis.readAllBytes();
             KeyFactory keyf = KeyFactory.getInstance("RSA");
-            EncodedKeySpec encks = new X509EncodedKeySpec(privBytes);
+            EncodedKeySpec encks = new PKCS8EncodedKeySpec(privBytes);
             pk = keyf.generatePrivate(encks);
-        } catch (IOException ex){
-            System.err.println("Error finding private key: "+ex.getMessage());
+        } catch (IOException ex) {
+            System.err.println("Error finding private key: " + ex.getMessage());
             //TODO show exception on UI            
-        } catch (NoSuchAlgorithmException ex){
+        } catch (NoSuchAlgorithmException ex) {
             System.err.println("Couldn't find algorithm in "
-                    + "privatekeyRetreiver: "+ex.getMessage());
+                    + "privatekeyRetreiver: " + ex.getMessage());
             //TODO show exception on UI
-        } catch (InvalidKeySpecException ex){
+        } catch (InvalidKeySpecException ex) {
             System.err.println("Invalid key spec at "
-                    + "privatekeyRetreiver: "+ex.getMessage());
+                    + "privatekeyRetreiver: " + ex.getMessage());
             //TODO show exception on UI
         }
-        
+
         return pk;
     }
 }

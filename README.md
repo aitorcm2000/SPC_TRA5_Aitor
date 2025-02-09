@@ -14,3 +14,8 @@ behind the secure management of files through encryption and decryption.
 - Being able to digitally sign files
 - Being able to log the proccesses and errors in the app
 - Being able to implement all of the above within a graphical user interface
+
+#### Dev
+Aitor Carreño Marques
+
+![paper-squidward](https://github.com/user-attachments/assets/0e4c41f5-29a7-46ab-96e9-90151321029c)

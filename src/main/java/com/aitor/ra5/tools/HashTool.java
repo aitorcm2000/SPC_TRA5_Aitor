@@ -100,9 +100,9 @@ public class HashTool {
                  * b, the result if we don't do this will result in ffffffxx
                  */
                 
-                String tohex = Integer.toHexString(b);
+                String tohex = Integer.toHexString(0xff & b);
                 if (tohex.length() == 1){
-                    encrypted_msg.append("0");
+                    encrypted_msg.append('0');
                 }
                 encrypted_msg.append(tohex);
             }

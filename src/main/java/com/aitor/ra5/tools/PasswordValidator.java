@@ -20,6 +20,7 @@ public class PasswordValidator {
     private static final String pattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?\":{}|<>])[A-Za-z0-9!@#$%^&*(),.?\":{}|<>]{8,}$";
     public static int pswdVal(String pswd){
         int i = -1;
+        System.out.println(pswd);
         if(pswd.matches(pattern)){
             i = 1;
         }else if(!pswd.matches(pattern)){
